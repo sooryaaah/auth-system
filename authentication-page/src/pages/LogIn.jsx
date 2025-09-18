@@ -1,6 +1,31 @@
 import React from 'react'
+import { useState } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const LogIn = () => {
+  const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSubmit = async () => {
+    e.preventDefault();
+    try {
+      const user = {
+        email,
+        password
+      }
+      const response = await axios.post('http://localhost:4000/login', user);
+      alert(response.data.message)
+      navigate('/')
+
+    } catch (error) {
+      console.log('error in handleSubmit : ', error)
+    }
+  }
+
+
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-r from-indigo-600 to-purple-500">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
@@ -9,10 +34,11 @@ const LogIn = () => {
           Log in to your account
         </p>
 
-        <form className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-gray-600 text-sm mb-1">Email</label>
             <input
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               placeholder="example@mail.com"
               className="w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -22,6 +48,7 @@ const LogIn = () => {
           <div>
             <label className="block text-gray-600 text-sm mb-1">Password</label>
             <input
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="********"
               className="w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-indigo-500"

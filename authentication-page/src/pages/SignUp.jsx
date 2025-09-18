@@ -1,9 +1,11 @@
 import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
+import {useNavigate} from 'react-router-dom'
 
 const SignUp = () => {
 
+  const navigate = useNavigate()
   const [name, setName] = useState('')
 
   const [email, setEmail] = useState('')
@@ -11,8 +13,9 @@ const SignUp = () => {
   const [password, setPassword] = useState('')
 
   const handleSubmit = async (e) => {
-    try {
+    
       e.preventDefault();
+    try {
       const newUser = {
         username: name,
         email,
@@ -21,7 +24,9 @@ const SignUp = () => {
 
       const response = await axios.post('http://localhost:4000/signup', newUser);
       alert(response.data.message);
+      navigate("/")
       console.log(newUser)
+      
 
     } catch (error) {
       console.log("error in handleSubmit: ", error)
