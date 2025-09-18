@@ -2,18 +2,18 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     name: {
-        type:String,
-        require:true
+        type: String,
+        required: true   // <-- typo fixed: "require" ➝ "required"
     },
     email: {
-        type:String,
-        require:true
+        type: String,
+        required: true,
+        unique: true     // optional: prevents duplicate emails
     },
     password: {
-        type:String,
-        require:true
+        type: String,
+        required: true
     }
+});
 
-})
-
-module.exports = mongoose.model("users", userSchema);
+module.exports = mongoose.models.users || mongoose.model("users", userSchema);
