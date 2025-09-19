@@ -5,7 +5,7 @@ const otpSchema = require("../db/models/otp");
 
 exports.signUp = async (req,res) => {
     try {
-        // console.log("req",req)
+        console.log("req")
        let body = req.body;
        console.log("body: ",body)
        let userName = body.username;
@@ -71,6 +71,7 @@ exports.signUp = async (req,res) => {
 exports.logIn = async (req,res) => {
     try {
 
+        console.log("req received")
         let body = req.body
         let email = body.email
 

@@ -8,7 +8,7 @@ const LogIn = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const user = {
@@ -16,8 +16,10 @@ const LogIn = () => {
         password
       }
       const response = await axios.post('http://localhost:4000/login', user);
+      
       alert(response.data.message)
       navigate('/')
+      console.log(response)
 
     } catch (error) {
       console.log('error in handleSubmit : ', error)
