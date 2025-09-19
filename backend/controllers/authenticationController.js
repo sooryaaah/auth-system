@@ -172,6 +172,8 @@ exports.emailVerification = async (req, res) => {
 exports.otpVerification = async (req, res) => {
     try {
         let body = req.body
+        console.log("Req body at backend:", req.body);
+
         let email = body.email
         let otp = body.otp
 

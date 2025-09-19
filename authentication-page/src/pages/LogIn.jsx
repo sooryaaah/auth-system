@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import EmailVerification from './EmailVerification'
+import {Link} from "react-router-dom"
 
 const LogIn = () => {
   const navigate = useNavigate()
@@ -62,9 +64,9 @@ const LogIn = () => {
               <input type="checkbox" className="w-4 h-4" />
               <span className="text-gray-600">Remember me</span>
             </label>
-            <a href="/forgot-password" className="text-indigo-600 hover:underline">
+            <Link to="/emailverification" className="text-indigo-600 hover:underline">
               Forgot password?
-            </a>
+            </Link>
           </div>
 
           <button
